@@ -1,6 +1,6 @@
-title: "Blog Title"
-author: "Blog Author"
-description: "Made with <b style=\"color: #f45;\">&lt;3</b> by <b><a href=\"https://github.com/niklasbuschmann\">@niklasbuschmann</a></b>"
+title: "oestronaut"
+author: "oestronaut"
+description: "idk"
 permalink: /:title/
 lang: "en"
 excerpt_separator: "\n\n\n"
