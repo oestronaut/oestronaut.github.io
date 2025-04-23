@@ -1,23 +1,31 @@
-import { formatDate, getDate } from "./Date"
 import { QuartzComponentConstructor, QuartzComponentProps } from "./types"
-import readingTime from "reading-time"
-import { classNames } from "../util/lang"
-import { i18n } from "../i18n"
 import { JSX } from "preact"
-import style from "./styles/contentMeta.scss"
-import PageTitle from "./PageTitle"
+import style from "./styles/characterSheet.scss"
 
 interface CharacterSheetOptions {
   /**
-   * Whether to display reading time
+   * Character name to display
    */
-  name: string
+  name?: string
+  /**
+   * Alternative name parameter (for backward compatibility)
+   */
+  me?: string
+  /**
+   * Image filename in the static directory
+   */
   img: string
+  /**
+   * Bean count for the character
+   */
+  beans?: number
 }
 
 const defaultOptions: CharacterSheetOptions = {
   name: "",
-  img: ""
+  me: "",
+  img: "",
+  beans: 10
 }
 
 export default ((opts?: Partial<CharacterSheetOptions>) => {
@@ -25,15 +33,28 @@ export default ((opts?: Partial<CharacterSheetOptions>) => {
   const options: CharacterSheetOptions = { ...defaultOptions, ...opts }
 
   function CharacterSheet(props: QuartzComponentProps) {
-      console.log("props", props)
-
+      // Use me parameter as fallback for name
+      const displayName = options.name || options.me || ""
+      
+      // Create a direct link to the character's page
+      const getCharacterLink = (name: string) => {
+        const lowerName = name.toLowerCase()
+        return `/${lowerName}`
+      }
+      
       return (
-          <div>
-            <PageTitle {...props} />
-            <img src={'static/' + options.img} width='100'/>
-            <ul>
-                <li><tt>beans: 10</tt></li>
-            </ul>
+          <div class="character-sheet">
+            <img src={'static/' + options.img} width='100' height='100' alt={displayName}/>
+            <div class="character-info">
+              {displayName && (
+                <h3>
+                  <a href={getCharacterLink(displayName)}>{displayName}</a>
+                </h3>
+              )}
+              <ul>
+                  <li><code>beans: {options.beans}</code></li>
+              </ul>
+            </div>
           </div>
       )
   }

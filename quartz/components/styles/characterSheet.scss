@@ -1,0 +1,92 @@
+.character-sheet {
+  margin: 1rem 0;
+  
+  // Default styling (desktop)
+  display: flex;
+  flex-direction: row; /* Always use horizontal layout */
+  align-items: center;
+  
+  img {
+    border-radius: 0; /* Make images square instead of circular */
+    margin-right: 1rem; /* Consistent right margin for horizontal layout */
+    aspect-ratio: 1 / 1; /* Ensure image maintains square aspect ratio */
+    object-fit: cover; /* Ensure the image covers the square area properly */
+    max-width: 100px; /* Limit image size */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    color: var(--dark);
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0; /* Reset margin to prevent spacing issues */
+    
+    li {
+      margin-bottom: 0.5rem;
+      
+      code {
+        background-color: var(--light);
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        
+        &.bean-increment {
+          background-color: #ffcc00;
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+  
+  .character-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  // Tablet layout
+  @media (min-width: 800px) and (max-width: 1200px) {
+    img {
+      width: 80px; /* Slightly smaller on tablet */
+    }
+    
+    h3 {
+      font-size: 1.2rem; /* Slightly smaller font on tablet */
+    }
+  }
+  
+  // Mobile layout
+  @media (max-width: 800px) {
+    img {
+      margin-right: 0.75rem;
+      width: 60px; /* Smaller on mobile */
+    }
+    
+    .character-info {
+      h3 {
+        font-size: 1.1rem; /* Smaller font on mobile */
+        margin-bottom: 0.5rem;
+      }
+      
+      ul li code {
+        font-size: 0.8rem; /* Smaller code on mobile */
+      }
+    }
+  }
+}

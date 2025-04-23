@@ -22,6 +22,13 @@ PageTitle2.css = `
 .page-title-2 > a {
   float: right;
 }
+
+/* Hide PageTitle2 on tablet and mobile */
+@media (max-width: 1200px) {
+  .page-title-2 {
+    display: none;
+  }
+}
 `
 
 export default (() => PageTitle2) satisfies QuartzComponentConstructor
