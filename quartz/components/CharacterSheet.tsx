@@ -39,6 +39,10 @@ export default ((opts?: Partial<CharacterSheetOptions>) => {
       // Create a direct link to the character's page
       const getCharacterLink = (name: string) => {
         const lowerName = name.toLowerCase()
+        // Special case for "website" - link to the index page
+        if (lowerName === "website") {
+          return "/"
+        }
         return `/${lowerName}`
       }
       

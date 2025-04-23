@@ -1,14 +1,54 @@
+// Container for multiple character sheets
+.sidebar.left {
+  // When in mobile view, add left padding to match top padding
+  @media (max-width: 800px) {
+    padding-left: 1em !important; // Use 1em for left padding
+    padding-top: 1em !important; // Use 1em for top padding as well
+    flex-wrap: wrap !important; // Allow character sheets to wrap to multiple rows
+    justify-content: flex-start !important; // Align character sheets to the left
+    width: 100% !important; // Ensure the container takes full width
+  }
+}
+
+// Character sheet grid layout
+.sidebar.left {
+  // Default grid layout for multiple character sheets
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); // Start with 1 column by default
+  gap: 0.5rem;
+  
+  // When there's enough space, use 2 columns
+  @media (min-width: 500px) and (max-width: 800px) {
+    grid-template-columns: repeat(2, minmax(200px, 1fr)); // 2 columns with minimum width of 200px
+  }
+  
+  // In mobile view, revert to flex layout as defined in base.scss
+  @media (max-width: 800px) {
+    display: flex;
+  }
+}
+
 .character-sheet {
-  margin: 1rem 0;
+  margin: 0.5rem; /* Add margin on all sides for better spacing */
   
   // Default styling (desktop)
   display: flex;
   flex-direction: row; /* Always use horizontal layout */
   align-items: center;
+  min-width: 200px; /* Minimum width before stacking */
+  
+  // In mobile view, ensure proper sizing and spacing
+  @media (max-width: 800px) {
+    flex: 0 1 auto; /* Don't grow, allow shrinking, use auto basis */
+    margin: 0.5rem; /* Consistent margin in mobile view */
+    max-width: calc(50% - 1rem); /* Ensure two columns at most in mobile view */
+  }
   
   img {
     border-radius: 0; /* Make images square instead of circular */
     margin-right: 1rem; /* Consistent right margin for horizontal layout */
+    margin-top: 0; /* Remove top margin */
+    margin-bottom: 0; /* Remove bottom margin */
     aspect-ratio: 1 / 1; /* Ensure image maintains square aspect ratio */
     object-fit: cover; /* Ensure the image covers the square area properly */
     max-width: 100px; /* Limit image size */
@@ -18,6 +58,8 @@
   h3 {
     margin-top: 0;
     margin-bottom: 1rem;
+    margin-left: 0; /* Ensure no left margin for alignment with ul */
+    padding-left: 0; /* Ensure no left padding for alignment with ul */
     font-size: 1.3rem;
     color: var(--dark);
     
@@ -58,6 +100,13 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+    padding-left: 0.5rem; /* Add padding between image and character info */
+    
+    /* Ensure consistent alignment of child elements */
+    h3, ul {
+      padding-left: 0;
+      margin-left: 0;
+    }
   }
   
   // Tablet layout
