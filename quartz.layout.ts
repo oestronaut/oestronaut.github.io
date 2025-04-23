@@ -50,11 +50,9 @@ export const defaultListPageLayout: PageLayout = {
       ],
   left: [
 //     Component.PageTitle(),
+    Component.CharacterSheet({me: "website", img: "oestronaut.jpg", beans: 0}),
     Component.CharacterSheet({me: "oestronaut", img: "oestronaut.jpg", beans: 10}),
     Component.CharacterSheet({me: "you?", img: "you.jpeg", beans: 12}),
-    Component.CharacterSheet({name: "Test 1", img: "oestronaut.jpg", beans: 5}),
-    Component.CharacterSheet({name: "Test 2", img: "you.jpeg", beans: 7}),
-    Component.CharacterSheet({name: "Test 3", img: "oestronaut.jpg", beans: 9}),
     //Component.MobileOnly(Component.Spacer()),
     //Component.Search(),
     //Component.Darkmode(),
