@@ -25,13 +25,14 @@ export const defaultContentPageLayout: PageLayout = {
     Component.TagList(),
   ],
   left: [
-    Component.PageTitle(),
+    Component.CharacterSheet({me: "oestronaut", img: "oestronaut.jpg"}),
     //Component.MobileOnly(Component.Spacer()),
     //Component.Search(),
     //Component.Darkmode(),
     //Component.DesktopOnly(Component.Explorer()),
   ],
   right: [
+    Component.CharacterSheet({me: "you?", img: "you.jpeg"}),
     //Component.Graph(),
     //Component.DesktopOnly(Component.TableOfContents()),
     //Component.Backlinks(),
@@ -52,5 +53,8 @@ export const defaultListPageLayout: PageLayout = {
     //Component.Darkmode(),
     //Component.DesktopOnly(Component.Explorer()),
   ],
-  right: [],
+  right: [
+    Component.PageTitle2("you?"),
+    Component.CharacterSheet("", "you?.jpg"),
+  ],
 }

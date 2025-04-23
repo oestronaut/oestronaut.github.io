@@ -22,6 +22,8 @@ import Breadcrumbs from "./Breadcrumbs"
 import Comments from "./Comments"
 
 import CustomFooter from "./CustomFooter"
+import CharacterSheet from "./CharacterSheet"
+import PageTitle2 from "./PageTitle2"
 
 export {
   ArticleTitle,
@@ -48,4 +50,6 @@ export {
   Comments,
 
   CustomFooter,
+  CharacterSheet,
+  PageTitle2,
 }
